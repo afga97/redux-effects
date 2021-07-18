@@ -14,6 +14,8 @@ import { cargarUsuarios } from '../../store/actions/usuarios.actions';
 export class ListaComponent implements OnInit {
 
   usuarios: UsuarioInterface[] = [];
+  loading: boolean = false;
+  error: any;
 
   constructor(
     private store: Store<AppState>
@@ -21,8 +23,10 @@ export class ListaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.select('usuarios').subscribe( ({ users }) => {
+    this.store.select('usuarios').subscribe( ({ users, loading, error }) => {
       this.usuarios = users;
+      this.loading = loading;
+      this.error = error;
     })
 
     this.store.dispatch( cargarUsuarios() )

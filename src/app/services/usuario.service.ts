@@ -15,10 +15,20 @@ export class UsuarioService {
   ) { }
 
   getUsers() {
-    return this.http.get(`${this.url}/users?per_page=6`)
+    return this.http.get(`${this.url}/users?per_page=6&delay=6`)
       .pipe(
         map( (response ) => { 
           let datares = (response as { data: UsuarioInterface[] })
+          return datares
+        })
+      )
+  }
+
+  getUserById(id: string) {
+    return this.http.get(`${this.url}/users/${ id }`)
+      .pipe(
+        map( (response ) => { 
+          let datares = (response as { data: UsuarioInterface })
           return datares
         })
       )

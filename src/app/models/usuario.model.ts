@@ -2,7 +2,7 @@
 export class Usuario {
 
     constructor(
-        id: number,
+        id: string,
         first_name: string,
         last_name: string,
         avatar: string,
@@ -10,7 +10,7 @@ export class Usuario {
 }
 
 export interface UsuarioInterface {
-    id: number;
+    id: string;
     first_name: string;
     last_name: string;
     avatar: string;
